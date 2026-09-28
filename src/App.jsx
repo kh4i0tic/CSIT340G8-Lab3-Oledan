@@ -1,4 +1,5 @@
 const Header = (props) => {
+  console.log(props)
   return (
     <div>
       <h1>{props.course}</h1>
@@ -42,13 +43,19 @@ const Footer = (props) => {
 
 const App = () => {
   const courseName = 'CSIT340 - Industry Elective 1'
-  
-  const course1 = 'CSIT321 - Applications Development and Emerging Technologies'
-  const units1 = 3
-  const course2 = 'CSIT327 - Information Management 2'
-  const units2 = 3
-  const course3 = 'IT317 - Project Management for IT'
-  const units3 = 3
+
+  const course1 = {
+    subject: 'CSIT321 - Applications Development and Emerging Technologies',
+    units: 3
+  }
+  const course2 = {
+    subject: 'CSIT327 - Information Management 2',
+    units: 3
+  }
+  const course3 = {
+    subject: 'IT317 - Project Management for IT',
+    units: 3
+  }
 
   const myName = "Jillian Britney Q. Oledan"
   const mySection = "G8"
@@ -57,11 +64,11 @@ const App = () => {
     <div>
       <Header course={courseName} />
       <Content 
-          subject1={course1} units1={units1} 
-          subject2={course2} units2={units2} 
-          subject3={course3} units3={units3} 
+          subject1={course1.subject} units1={course1.units}
+          subject2={course2.subject} units2={course2.units} 
+          subject3={course3.subject} units3={course3.units} 
       />
-      <Total totalUnits={units1 + units2 + units3} />
+      <Total totalUnits={course1.units + course2.units + course3.units} />
       <Footer name={myName} section={mySection} />
     </div>
   )
