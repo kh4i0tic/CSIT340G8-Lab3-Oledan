@@ -8,11 +8,12 @@ const Header = (props) => {
 }
 
 const Content = (props) => {
+  console.log(props)
   return (
     <div>
-      <Part subject={props.subject1} units={props.units1} />
-      <Part subject={props.subject2} units={props.units2} />
-      <Part subject={props.subject3} units={props.units3} />
+      {props.parts.map((part, index) => (
+        <Part key={index} subject={part.subject} units={part.units} />
+      ))}
     </div>
   )
 }
@@ -26,9 +27,10 @@ const Part = (props) => {
 }
 
 const Total = (props) => {
+  console.log(props)
   return (
     <div>
-      <p>Total Units: {props.totalUnits}</p>
+      <p>Total Units: {props.parts.reduce((sum, part) => sum + part.units, 0)}</p>
     </div>
   )
 }
@@ -44,18 +46,20 @@ const Footer = (props) => {
 const App = () => {
   const courseName = 'CSIT340 - Industry Elective 1'
 
-  const course1 = {
-    subject: 'CSIT321 - Applications Development and Emerging Technologies',
+  const parts = [
+    {
+      subject: 'CSIT321 - Applications Development and Emerging Technologies',
+      units: 3
+    },
+    {
+      subject: 'CSIT327 - Information Management 2',
+      units: 3
+    },
+    {
+      subject: 'IT317 - Project Management for IT',
     units: 3
-  }
-  const course2 = {
-    subject: 'CSIT327 - Information Management 2',
-    units: 3
-  }
-  const course3 = {
-    subject: 'IT317 - Project Management for IT',
-    units: 3
-  }
+    }
+  ]
 
   const myName = "Jillian Britney Q. Oledan"
   const mySection = "G8"
@@ -63,12 +67,8 @@ const App = () => {
   return (
     <div>
       <Header course={courseName} />
-      <Content 
-          subject1={course1.subject} units1={course1.units}
-          subject2={course2.subject} units2={course2.units} 
-          subject3={course3.subject} units3={course3.units} 
-      />
-      <Total totalUnits={course1.units + course2.units + course3.units} />
+      <Content parts={parts}/>
+      <Total parts={parts} />
       <Footer name={myName} section={mySection} />
     </div>
   )
