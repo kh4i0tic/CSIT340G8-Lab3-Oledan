@@ -9,7 +9,17 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <p>{props.name}: {props.units}</p>
+      <Part subject={props.subject1} units={props.units1} />
+      <Part subject={props.subject2} units={props.units2} />
+      <Part subject={props.subject3} units={props.units3} />
+    </div>
+  )
+}
+
+const Part = (props) => {
+  return (
+    <div>
+      <p>{props.subject}: {props.units} units</p>
     </div>
   )
 }
@@ -32,6 +42,7 @@ const Footer = (props) => {
 
 const App = () => {
   const courseName = 'CSIT340 - Industry Elective 1'
+  
   const course1 = 'CSIT321 - Applications Development and Emerging Technologies'
   const units1 = 3
   const course2 = 'CSIT327 - Information Management 2'
@@ -45,9 +56,11 @@ const App = () => {
   return (
     <div>
       <Header course={courseName} />
-      <Content name={course1} units={units1} />
-      <Content name={course2} units={units2} />
-      <Content name={course3} units={units3} />
+      <Content 
+          subject1={course1} units1={units1} 
+          subject2={course2} units2={units2} 
+          subject3={course3} units3={units3} 
+      />
       <Total totalUnits={units1 + units2 + units3} />
       <Footer name={myName} section={mySection} />
     </div>
