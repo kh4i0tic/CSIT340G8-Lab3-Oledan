@@ -44,31 +44,32 @@ const Footer = (props) => {
 }
 
 const App = () => {
-  const courseName = 'CSIT340 - Industry Elective 1'
-
-  const parts = [
-    {
-      subject: 'CSIT321 - Applications Development and Emerging Technologies',
+  const course = {
+    name: 'CSIT340 - Industry Elective 1',
+    parts: [
+      {
+        subject: 'CSIT321 - Applications Development and Emerging Technologies',
+        units: 3
+      },
+      {
+        subject: 'CSIT327 - Information Management 2',
+        units: 3
+      },
+      {
+        subject: 'IT317 - Project Management for IT',
       units: 3
-    },
-    {
-      subject: 'CSIT327 - Information Management 2',
-      units: 3
-    },
-    {
-      subject: 'IT317 - Project Management for IT',
-    units: 3
-    }
-  ]
+      }
+    ]
+  }
 
   const myName = "Jillian Britney Q. Oledan"
   const mySection = "G8"
 
   return (
     <div>
-      <Header course={courseName} />
-      <Content parts={parts}/>
-      <Total parts={parts} />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
       <Footer name={myName} section={mySection} />
     </div>
   )
